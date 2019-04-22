@@ -12,10 +12,9 @@ xlabel('X'); ylabel('Y'), zlabel('Z');
 box on;
 
 %% **********************************************************************
-% Partie 1.1-2 : Triangulation de Delaunay
-%   On utilise la methode de Delaunay pour organiser les points en
-%   triangles, afin de recuperer les differents plans
-%   ******* A completer ******* %
+%  Triangulation de Delaunay
+
+
 TRI = delaunay(roiX,roiY);
 figure()
 trisurf(TRI,roiX,roiY,roiZ);
@@ -28,26 +27,20 @@ Vbc = C-B;
 Vab = B-A;
 N = cross (Vab ,Vbc) / norm(cross (Vab ,Vbc));
 %% **********************************************************************
-% Partie 1.1-3 : Histogramme (elevation)
-%   ******* A completer ******* %
-[azimuth,elevation,r] = cart2sph(N(:,1),N(:,2),N(:,3));
+% Histogramme (elevation)
 
+[azimuth,elevation,r] = cart2sph(N(:,1),N(:,2),N(:,3));
 % Affichage de l'histogramme
-%   ******* A completer ******* %
 hist(elevation)
 
 
 
 %% **********************************************************************
-% Partie 1.1-4 : Rotation de la scene pour recuperer les points a la surface
+Rotation de la scene pour recuperer les points a la surface
 % de l'objet
 
 % On recupere l'orientation des normales grace a l'histogramme
-%   ******* A completer ******* %
 
-
-% Calcul de la matrice de rotation
-%   ******* A decommenter et completer ******* %
 a =-0.65;
 R = [ 1      0    0       ;
       0    cos(a) -sin(a) ;
